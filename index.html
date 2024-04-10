@@ -9,12 +9,14 @@
 <body>
 
     <h1>Bat Ball Stump game</h1>
-    <button id="ball" onclick='ball()'>Ball</button>
-    <button id='bat' onclick="bat()">Bat</button>
-    <button id="stump" onclick="stump()">Stump</button>
+    <button id="ball" onclick='selection("Ball")'>Ball</button>
+    <button id='bat' onclick='selection("Bat")''>Bat</button>
+    <button id="stump" onclick='selection("Stump")'>Stump</button>
      <h5 id="won"></h5>
     <p id="selection">Opt what you want</p>
     <p id="gameStatus"></p>
+
+    <button id="new-game" onclick="newGame()">Start New Game</button>
 
     <script src="script.js"></script>
 </body>

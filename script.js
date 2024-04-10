@@ -1,8 +1,43 @@
-let score = {
+
+let compChoice = computerChoice()
+let score = JSON.parse(localStorage.getItem('score')) || {
     win: 0,
     lost: 0,
-    tie:0
+    tie: 0
+};
+
+score.gameStatus= function () {
+    localStorage.setItem('score', JSON.stringify(score))
+    return  document.querySelector('#gameStatus').innerText=`Game Status: won:${score.win} lost:${score.lost} tie:${score.tie}`
 }
+
+//initial State
+document.querySelector('#gameStatus').innerText = `Game Status: won:${score.win} lost:${score.lost} tie:${score.tie}`
+
+
+
+function newGame() {
+
+    localStorage.clear()
+   console.log('cleared')
+   console.log(score)
+    score = {
+        
+        ...score,
+        win: 0,
+        lost: 0,
+        tie: 0,
+    }
+    score.gameStatus();
+    document.querySelector('#selection').innerText = 'Opt what you want';
+    document.querySelector('#won').innerText = ''
+    
+    
+}
+    
+
+
+
 
 function computerChoice() {
     let selctedNumber = Math.random() * 3
@@ -16,38 +51,11 @@ function computerChoice() {
     
 }
 
-function gameStatus() {
-    document.querySelector('#gameStatus').innerText=`Game Status: won:${score.win} lost:${score.lost} tie:${score.tie}`
-}
-function bat() {
-    let compChoice = computerChoice()
-    let userChoice ='Bat'
-    document.querySelector('#selection').innerText = 'Since You selected Bat and computer selected ' + compChoice;
-
+function selection(userChoice) {
+    let compChoice=computerChoice()
+    document.querySelector('#selection').innerText = `Since You selected ${userChoice} and computer selected ${compChoice}`
     document.querySelector('#won').innerText = getResult(userChoice, compChoice)
-    
-    gameStatus()
-
-}
-function ball() {
-    let compChoice = computerChoice()
-    let userChoice='Ball'
-    document.querySelector('#selection').innerText = `Since You selected Ball and computer selected ${compChoice}`
-    document.querySelector('#won').innerText = getResult(userChoice, compChoice)
-    
-    // document.querySelector('#gameStatus').innerText=`Game Status: won:${score.win} lost:${score.lost} tie:${score.tie}`
-    gameStatus()
-}
-function stump() {
-    let compChoice = computerChoice()
-    let userChoice='Stump'
-    document.querySelector('#selection').innerText = `Since You selected Stump and computer selected ${compChoice}`
-    document.querySelector('#won').innerText = getResult(userChoice, compChoice)
-    
-
-    // document.querySelector('#gameStatus').innerText=`Game Status: won:${score.win} lost:${score.lost} tie:${score.tie}`
-
-    gameStatus()
+    score.gameStatus()
 }
 
 function getResult(userChoice, compChoice) {
@@ -65,3 +73,32 @@ function getResult(userChoice, compChoice) {
         
 }
 
+// function bat() {
+    
+//     let userChoice ='Bat'
+//     document.querySelector('#selection').innerText = 'Since You selected Bat and computer selected ' + compChoice;
+
+//     document.querySelector('#won').innerText = getResult(userChoice, compChoice)
+    
+//     score.gameStatus()
+
+// }
+
+// function stump() {
+//     let userChoice='Stump'
+//     document.querySelector('#selection').innerText = `Since You selected Stump and computer selected ${compChoice}`
+//     document.querySelector('#won').innerText = getResult(userChoice, compChoice)
+    
+
+//     // document.querySelector('#gameStatus').innerText=`Game Status: won:${score.win} lost:${score.lost} tie:${score.tie}`
+
+//     score.gameStatus()
+// }
+
+
+
+
+
+
+// storing data to browser local storage
+//localStorage.setItem('score', JSON.stringify(score))
