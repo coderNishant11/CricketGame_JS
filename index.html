@@ -9,10 +9,17 @@
 <body>
 
     <h1>Bat Ball Stump game</h1>
-    <button id="ball" onclick='selection("Ball")'>Ball</button>
-    <button id='bat' onclick='selection("Bat")''>Bat</button>
-    <button id="stump" onclick='selection("Stump")'>Stump</button>
-     <h5 id="won"></h5>
+    <button id='bat' onclick='selection("Bat")' class="choice-button">
+        <img src="./images/bat.png" alt="bat-image" class="choice-image">
+    </button>
+    <button id="ball" onclick='selection("Ball")' class="choice-button">
+        <img src="./images/ball.png" alt="ball-image" class="choice-image">
+    </button>
+    
+    <button id="stump" onclick='selection("Stump")' class="choice-button">
+        <img src="./images/stump.png" alt="stump.png-image" class="choice-image">
+    </button>
+    <h3 id="won"></h3>
     <p id="selection">Opt what you want</p>
     <p id="gameStatus"></p>
 
